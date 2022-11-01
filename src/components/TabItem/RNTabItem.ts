@@ -2,7 +2,7 @@ import { QWidget, QIcon, Component } from "@nodegui/nodegui";
 import { RNComponent, RNProps } from "../config";
 import { RNTab } from "../Tab/RNTab";
 
-export interface TabItemProps {
+export interface TabItemProps extends RNProps {
   title?: string;
   icon?: QIcon;
 }

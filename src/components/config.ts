@@ -1,10 +1,13 @@
 import { QWidget, Component } from "@nodegui/nodegui";
+import { ReactNode } from "react";
 import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
 
-export interface RNProps {}
+export interface RNProps {
+  children?: ReactNode;
+}
 
 export abstract class RNComponent {
   static tagName: string;

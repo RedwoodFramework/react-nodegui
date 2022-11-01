@@ -1,9 +1,8 @@
-import { FunctionComponentElement } from "react";
 import { Component, QWidget } from "@nodegui/nodegui";
-import { RNComponent } from "../../config";
+import { RNComponent, RNProps } from "../../config";
 import { RNGridRow } from "../GridRow/RNGridRow";
 
-export type GridColumnProps = {
+export interface GridColumnProps extends RNProps {
   /**
    * The number of horizontal units to occupy
    */

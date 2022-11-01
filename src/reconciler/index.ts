@@ -25,6 +25,7 @@ const HostConfig: Reconciler.HostConfig<
   any,
   any,
   any,
+  any,
   any
 > = {
   now: Date.now,
@@ -90,8 +91,12 @@ const HostConfig: Reconciler.HostConfig<
       context
     );
   },
+  clearContainer: function(container: AppContainer) {
+    container.clear();
+  },
   prepareForCommit: function(rootNode) {
     // noop
+    return null;
   },
   resetAfterCommit: function(rootNode) {
     // noop
@@ -187,7 +192,7 @@ const HostConfig: Reconciler.HostConfig<
     //for supporting refs
     return instance;
   },
-  shouldDeprioritizeSubtree: (type, props) => {
+  shouldDeprioritizeSubtree: (type: any, props: any) => {
     // Use to deprioritize entire subtree based on props and types. For example if you dont need reconciler to calculate for hidden elements
     if ((props as any).visible === false) {
       return true;
@@ -198,6 +203,7 @@ const HostConfig: Reconciler.HostConfig<
   hideInstance: (instance: QWidget<any>) => {
     instance.hide();
   },
+  //@ts-ignore
   unhideInstance: (instance: QWidget<any>, Props: RNProps) => {
     instance.show();
   },
@@ -207,6 +213,7 @@ const HostConfig: Reconciler.HostConfig<
       "hideTextInstance called when platform doesnt have host level text"
     );
   },
+  //@ts-ignore
   unhideTextInstance: (instance: QWidget<any>, Props: RNProps) => {
     // noop since we dont have any host text
     console.warn(

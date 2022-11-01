@@ -7,9 +7,10 @@ import { RNComponent } from "../components/config";
 import deepForceUpdate from "react-deep-force-update";
 
 type NodeGuiReconciler = Reconciler<
+  Set<QWidget<any>>,
   RNComponent,
   any,
-  Set<QWidget<any>>,
+  any,
   any
 >;
 
@@ -33,15 +34,25 @@ export class Renderer {
   }
   static render(element: React.ReactNode, options?: RendererOptions) {
     const containerInfo = appContainer;
-    const isConcurrent = true;
-    const hydrate = false;
+    const tag = 0; // indicates root
+    const hydrationCallbacks = null;
+    const isStrictMode = false;
+    const concurrentUpdatesByDefaultOverride = null;
+    const identifierPrefix = "";
+    const transitionCallbacks = null;
+    const onRecoverableError = (error: Error) => void {};
 
     const rendererOptions = Object.assign({}, defaultOptions, options);
 
     Renderer.container = reconciler.createContainer(
       containerInfo,
-      isConcurrent,
-      hydrate
+      tag,
+      hydrationCallbacks,
+      isStrictMode,
+      concurrentUpdatesByDefaultOverride,
+      identifierPrefix,
+      onRecoverableError,
+      transitionCallbacks
     ); // Creates root fiber node.
 
     (rendererOptions.onInit as Function)(reconciler);

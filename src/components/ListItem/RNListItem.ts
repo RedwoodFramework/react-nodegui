@@ -1,7 +1,7 @@
 import { QWidget, QListWidgetItem, QIcon } from "@nodegui/nodegui";
-import { RNComponent } from "../config";
+import { RNComponent, RNProps } from "../config";
 
-export interface ListItemProps {
+export interface ListItemProps extends RNProps {
   title?: string;
   icon?: QIcon;
 }
